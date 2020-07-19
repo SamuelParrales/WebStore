@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/*Clase que permite la recuperacion de archivos*/
+/*Clase que permite la recuperacion de archivos---*/
 @Configuration
 @AutoConfigureAfter(DispatcherServletAutoConfiguration.class)
 public class CustomWebMvcAutoConfig implements WebMvcConfigurer{
