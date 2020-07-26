@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-import sepp.TiendaWeb.repos.ProductRepo;
+
 import sepp.TiendaWeb.service.PictureService;
 
 
@@ -22,5 +22,10 @@ public class TiendaControlador {
 	@RequestMapping("")
 	public String index() {
 		return "index";
+	}
+	
+	@RequestMapping("/acerca")
+	public String About() {
+		return "Acerca";
 	}
 }
