@@ -14,6 +14,9 @@ body{
     color: #fff;
     cursor: pointer;
 }
+.navbar-brand{
+	font-size: 20;
+}
 
 .nav-link:haver{
   color: #f6e0b5;  
@@ -22,6 +25,8 @@ body{
 .navbar-collapse{
     justify-content: flex-end;
 }
+
+
 
 .header{
     background-image: url('../images/background.jpg');
@@ -38,6 +43,8 @@ body{
     top: 0;
     background: rgba(0,0,0,0.67);
 }
+
+
 
 .description{
     left: 50%;
@@ -68,3 +75,4 @@ table th{
 table td{
     color: #f6e0b5;
 }
+

@@ -19,38 +19,62 @@
 			
 		}*/
         </script>
-            <nav class="navbar navbar-expand-md">
-                <button class="navbar-toggler navbar-dark" type="button" data-toggle="#main-navigation"> 
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="main-navigation">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Ver Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Carrito de Compras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/TiendaWeb/acerca">Acerca de</a>
-                        </li>
-                     
-                        <div th:unless="${#authorization.expression('isAuthenticated()')}">
-                            <li class="nav-item">
-                                <a class="nav-link" href="TiendaWeb/login">Iniciar sesión</a>
-                            </li>
-                        </div>
-        
-                        <div sec:authorize="isAuthenticated()">
-                            <li class="nav-item">
-                            <a class="nav-link" href="/TiendaWeb/logout">Cerrar sesión</a>
-        					</li>
-                        </div>
-        
-                    </ul>
-        
-                </div>
-            </nav>
+           
+           
+           <!--Inicio de la navegacion-->    
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+  
+  <a class="navbar-brand" href="#">Tienda Web</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/TiendaWeb/list">Ver Productos</a>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link" href="#">Ver Carrito</a>
+      </li>
+      
+    </ul>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      	
+      	     	<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+      
+      
+      	
+      	<ul class= "navbar-nav">
+      		<li class="nav-item dropdown">
+        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          		Iniciar Sesi�n
+        		</a>
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          			<a class="dropdown-item" href="#">Action</a>
+          			<a class="dropdown-item" href="#">Another action</a>
+          			<div class="dropdown-divider"></div>
+          			<a class="dropdown-item" href="#">Something else here</a>
+        		</div>
+      		</li>
+      		
+      	</ul>
+      </div>
+      
+      
+  </div>
+</nav>
+           
+    <!--Fin de la navegacion   -->    
         
         <header class="page-header header container-fluid">
             <div class="overlay">

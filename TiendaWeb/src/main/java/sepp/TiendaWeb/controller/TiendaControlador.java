@@ -27,7 +27,7 @@ public class TiendaControlador {
 	}
 	
 	@GetMapping("/list")				//Lista los productos
-	public String showRecipes(Model model) {
+	public String showProducts 	(Model model) {
 		model.addAttribute("products", repo.findAll());
 		return "Productos";
 	}
