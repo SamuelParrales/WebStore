@@ -24,8 +24,6 @@
            <!--Inicio de la navegacion-->    
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   
-  
-  <a class="navbar-brand" href="#">Tienda Web</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -40,33 +38,21 @@
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="#">Ver Carrito</a>
+        <a class="nav-link" href="/TiendaWeb/carrito">Ver Carrito</a>
       </li>
-      
+    <!--  <li class="dropdown">
+ 	 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   	 Dropdown button
+  	</button>
+  	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+ 	 </div>
+	</li>-->
     </ul>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
- 
+    </div>
       
-      	
-      	<ul class= "navbar-nav">
-      		<li class="nav-item dropdown">
-        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          		Iniciar Sesión
-        		</a>
-        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          			<a class="dropdown-item" href="#">Action</a>
-          			<a class="dropdown-item" href="#">Another action</a>
-          			<div class="dropdown-divider"></div>
-          			<a class="dropdown-item" href="#">Something else here</a>
-        		</div>
-      		</li>
-      		
-      	</ul>
-      </div>
-      
-      
-  </div>
 </nav>
            
     <!--Fin de la navegacion   -->    
@@ -74,8 +60,8 @@
         <header class="page-header header container-fluid">
             <div class="overlay">
                 <div class="description">
-                    <h1>Tienda  Web</h1>
-                    <p> </p>
+                    <h1>Tienda para compras online</h1>
+                    <p>Sitio destinado para realizar compras de  productos</p>
                 </div>
             </div>
         </header>

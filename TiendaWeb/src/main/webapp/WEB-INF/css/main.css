@@ -55,24 +55,14 @@ body{
 }
 
 .description h1{
-    color: #f6e0b5;
+    color: white;
 }
 
 .description p{
-    color: #f6e0b5;
+    color: red;
     font-size: 1.5rem;
     line-height: 1.5;
 }
 
-form label{
-    color: #f6e0b5;
-}
 
-table th{
-    color: #f6e0b5;
-}
-
-table td{
-    color: #f6e0b5;
-}
 
