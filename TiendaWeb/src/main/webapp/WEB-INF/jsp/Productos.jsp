@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/main.css">
+ 		 <link rel="stylesheet" type="text/css" href="/css/main.css">
     </head>
 
     <body>
@@ -57,13 +57,13 @@
       		<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           		Iniciar Sesión
-          		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        		</a>
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
           			<a class="dropdown-item" href="#">Action</a>
           			<a class="dropdown-item" href="#">Another action</a>
           			<div class="dropdown-divider"></div>
           			<a class="dropdown-item" href="#">Something else here</a>
         		</div>
-        		</a>
         		
       		</li>
       		
