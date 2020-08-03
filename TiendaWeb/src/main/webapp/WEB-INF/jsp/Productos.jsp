@@ -91,15 +91,15 @@
         						</div>
         						
         						<div class="card-body">			
-        							<i>$1,050.00</i>
-        							<img src="" width="200" height="180">
+        							<i>$ ${p.getPrecio()}</i>
+        							<img src="@{pic/{id}(id=${p.image}+.jpg)}" width="200" height="180"> <!-- Aqui va la imagen -->
         						</div>
         						
         						<div class = "card-footer text-center">
-        							<label>Descripción Producto</label>
+        							<label>${p.getDescripcion()}</label>
         							<br>
-        							<label>Disponible:</label>
-        							<label>2</label>
+        							<label>Disponibles: ${p.getUnidades()}</label>
+        							
         							<div>
         							<a href="" class="btn btn-outline-info">Agregar a Carrito</a>
         							<a href="" class ="btn btn-danger">Comprar</a>
