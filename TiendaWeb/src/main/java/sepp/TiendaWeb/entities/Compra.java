@@ -25,6 +25,7 @@ public class Compra {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Cliente cliente;
 	
+	//Metodos setter y getter
 	public Long getIDCompras() {
 		return IDCompras;
 	}
