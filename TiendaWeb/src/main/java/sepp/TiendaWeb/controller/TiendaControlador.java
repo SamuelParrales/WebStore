@@ -32,13 +32,15 @@ public class TiendaControlador {
 		return "Productos";
 	}
 	
-	@RequestMapping("/acerca")
-	public String About() {
-		return "Acerca";
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
 	}
 	
 	@RequestMapping("/carrito")
 	public String Showproduct() {
 		return "carrito";
 	}
+	
+	
 }
