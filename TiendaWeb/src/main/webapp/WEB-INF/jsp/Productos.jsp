@@ -40,7 +40,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/list">Ver Carrito</a>
+        <a class="nav-link" href="/TiendaWeb/carrito">Ver Carrito</a>
       </li>
       
     </ul>

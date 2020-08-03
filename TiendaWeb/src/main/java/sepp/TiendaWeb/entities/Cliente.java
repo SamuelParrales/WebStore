@@ -1,5 +1,6 @@
 package sepp.TiendaWeb.entities;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,9 @@ public class Cliente {
 	private String apellido;
 	private String contraseña;
 	private String correo;
+	//Relaciones entre tablas
+	
+	
 	
 	public Long getID() {
 		return ID;

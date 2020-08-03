@@ -15,14 +15,17 @@
         <script src="/js/main.js"></script>
         
         	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
+	<a class="navbar-brand" href="#">Tienda Web</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+        <a class="nav-link" href="/TiendaWeb/">Inicio</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/TiendaWeb/list">Ver Productos</a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="#">Ver Carrito<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
