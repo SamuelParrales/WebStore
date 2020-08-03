@@ -31,8 +31,14 @@ public class TiendaControlador {
 		model.addAttribute("products", repo.findAll());
 		return "Productos";
 	}
+	
 	@RequestMapping("/acerca")
 	public String About() {
 		return "Acerca";
+	}
+	
+	@RequestMapping("/carrito")
+	public String Showproduct() {
+		return "carrito";
 	}
 }
