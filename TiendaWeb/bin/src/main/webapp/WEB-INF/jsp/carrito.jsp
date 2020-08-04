@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -25,12 +24,8 @@
       <li class="nav-item">
         <a class="nav-link" href="/TiendaWeb/list">Ver Productos</a>
       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/carrito">
-        	<i class = "fas fa-cart-plus">
-        		<label style="color: orange;">(${contador})</label>
-        	</i> Ver Carrito
-        </a>
+       <li class="nav-item active">
+        <a class="nav-link" href="#">Ver Carrito<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
@@ -51,17 +46,14 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="car" items="${carrito}">
 						<tr>
-							<th>${car.getItem()}</th>
-							<th>${car.getNombres()}</th>
-							<th>${car.descripcion}</th>
-							<th>${car.precioCompra}</th>
-							<th>${car.cantidad}</th>
-							<th>${car.subTotal}</th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
 						</tr>
-					</c:forEach>
-						
 					</tbody>
 				</table>
 			</div>
@@ -79,8 +71,9 @@
 							<input type="text" readonly="" class="form-control">
 						</div>
 						<div class="card-footer">
-							<a href="#" class="btn btn-info btn-block">Realizar Pago</a>
+							<a href="#" class="btn btn-info btn-block">Realizar Pagp</a>
 							<a href="#" class="btn btn-danger btn-block">Generar Compra</a>
+							
 						</div>
 					</div>
 			</div>

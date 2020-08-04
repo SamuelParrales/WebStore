@@ -23,7 +23,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   
   
-    <a class="navbar-brand" href="#">Tienda Web</a>
+  <a class="navbar-brand" href="#">Tienda Web</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -40,11 +40,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/carrito">
-        	<i class = "fas fa-cart-plus">
-        		<label style="color: orange;">(${contador})</label>
-        	</i> Ver Carrito
-        </a>
+        <a class="nav-link" href="/TiendaWeb/carrito">Ver Carrito</a>
       </li>
       
     </ul>
@@ -105,7 +101,7 @@
         							<label>Disponibles: ${p.getUnidades()}</label>
         							
         							<div>
-        							<a href="/TiendaWeb/list?accion=AddToCarrito&ID=${p.ID}" class="btn btn-outline-info">Agregar a Carrito</a>
+        							<a href="" class="btn btn-outline-info">Agregar a Carrito</a>
         							<a href="" class ="btn btn-danger">Comprar</a>
         							</div>
         						</div>
