@@ -47,7 +47,6 @@ public class TiendaControlador {
 	Carrito car;
 													//FinCarrito
 	
-	
 	@GetMapping("/list")				//Lista los productos
 	public String showProducts(HttpServletRequest resquest) 
 	{
@@ -57,81 +56,16 @@ public class TiendaControlador {
 		{
 			switch (accion) {
 			case "AddToCarrito":
-				int pos=0;
-				cantidad=1;
+				
 				ID =  Long.parseLong(resquest.getParameter("ID"));	//Captura el ID
 				p = repo.findById(ID).orElseThrow( () -> new IllegalArgumentException("invalid product id: "+ID));;	//Captura el producto
-				
-				if(listCarrito.size()>0)		//Para que no exista duplicidad de datos
-				{
-					for (int i = 0; i < listCarrito.size(); i++) {
-						if(ID==listCarrito.get(i).getId_Productos())
-						{
-							pos=i;
-						}
-					}
-					
-					if(ID==listCarrito.get(pos).getId_Productos())
-					{
-						cantidad=listCarrito.get(pos).getCantidad()+cantidad; 
-						double subtotal = listCarrito.get(pos).getPrecioCompra()*cantidad;
-						listCarrito.get(pos).setCantidad(cantidad);
-						listCarrito.get(pos).setSubTotal(subtotal);
-						
-					}
-					else
-					{
-						item++;
-						
-						car = new Carrito();
-						
-						//Se llenan las filas del carro
-						car.setItem(item);
-						car.setId_Productos(p.getID());
-						car.setNombres(p.getNombre());
-						car.setDescripcion(p.getDescripcion());
-						car.setPrecioCompra(p.getPrecio());
-						car.setCantidad(cantidad);
-						car.setSubTotal(cantidad*p.getPrecio());
-						listCarrito.add(car);
-						//end
-					}
-				}
-				else
-				{
-					item++;
-					
-					car = new Carrito();
-					
-					//Se llenan las filas del carro
-					car.setItem(item);
-					car.setId_Productos(p.getID());
-					car.setNombres(p.getNombre());
-					car.setDescripcion(p.getDescripcion());
-					car.setPrecioCompra(p.getPrecio());
-					car.setCantidad(cantidad);
-					car.setSubTotal(cantidad*p.getPrecio());
-					listCarrito.add(car);
-					//end
-				}
-				
+	
+				AddProductoCarrito();		//Insertar producto en el carrito
 				break;
 			case "Comprar":
 				ID =  Long.parseLong(resquest.getParameter("ID"));	//Captura el ID
 				p = repo.findById(ID).orElseThrow( () -> new IllegalArgumentException("invalid product id: "+ID));;	//Captura el producto
-				item++;
-				
-				car = new Carrito();
-				
-				//Se llenan las filas del carro
-				car.setItem(item);
-				car.setId_Productos(p.getID());
-				car.setNombres(p.getNombre());
-				car.setDescripcion(p.getDescripcion());
-				car.setPrecioCompra(p.getPrecio());
-				car.setCantidad(cantidad);
-				car.setSubTotal(cantidad*p.getPrecio());
-				listCarrito.add(car);
+				AddProductoCarrito();	//Guarda el producto en el carrito
 				
 			case "OpenCarrito":								//Abrir Carrito
 				totalPagar=0;
@@ -183,7 +117,50 @@ public class TiendaControlador {
 		return "login";
 	}
 	
-
-	
-
+//*******************************************Metodos complementarios para evitar redundancia 
+	private void CopyAtributos()		//Copias los atributos en el carro de compra
+	{
+		item++;
+		
+		car = new Carrito();
+		
+		//Se llenan las filas del carro
+		car.setItem(item);
+		car.setId_Productos(p.getID());
+		car.setNombres(p.getNombre());
+		car.setDescripcion(p.getDescripcion());
+		car.setPrecioCompra(p.getPrecio());
+		car.setCantidad(cantidad);
+		car.setSubTotal(cantidad*p.getPrecio());
+		listCarrito.add(car);
+		//end
+	}
+	private void AddProductoCarrito()
+	{
+		int pos=0;
+		if(listCarrito.size()>0)		//Para que no exista duplicidad de datos
+		{
+			for (int i = 0; i < listCarrito.size(); i++) {
+				if(ID==listCarrito.get(i).getId_Productos())
+				{
+					pos=i;		//Guarda el producto una vez encontrado
+					break;		//Termina el ciclo
+				}
+					
+			}
+			
+			if(ID==listCarrito.get(pos).getId_Productos())
+			{
+				cantidad=listCarrito.get(pos).getCantidad()+cantidad; 
+				double subtotal = listCarrito.get(pos).getPrecioCompra()*cantidad;
+				listCarrito.get(pos).setCantidad(cantidad);
+				listCarrito.get(pos).setSubTotal(subtotal);
+				cantidad=1;				
+			}
+			else
+				CopyAtributos();	//Guarda el producto en el carrito
+		}
+		else
+			CopyAtributos();		//Guarda el producto en el carrito
+	}
 }
