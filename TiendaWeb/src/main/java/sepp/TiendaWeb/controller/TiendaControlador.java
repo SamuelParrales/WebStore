@@ -6,10 +6,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -50,30 +52,69 @@ public class TiendaControlador {
 	public String showProducts(HttpServletRequest resquest) 
 	{
 		String accion = resquest.getParameter("accion");
-	
+		
 		try
 		{
 			switch (accion) {
 			case "AddToCarrito":
+				int pos=0;
+				cantidad=1;
 				ID =  Long.parseLong(resquest.getParameter("ID"));	//Captura el ID
 				p = repo.findById(ID).orElseThrow( () -> new IllegalArgumentException("invalid product id: "+ID));;	//Captura el producto
-				item++;
 				
-				car = new Carrito();
+				if(listCarrito.size()>0)		//Para que no exista duplicidad de datos
+				{
+					for (int i = 0; i < listCarrito.size(); i++) {
+						if(ID==listCarrito.get(i).getId_Productos())
+						{
+							pos=i;
+						}
+					}
+					
+					if(ID==listCarrito.get(pos).getId_Productos())
+					{
+						cantidad=listCarrito.get(pos).getCantidad()+cantidad; 
+						double subtotal = listCarrito.get(pos).getPrecioCompra()*cantidad;
+						listCarrito.get(pos).setCantidad(cantidad);
+						listCarrito.get(pos).setSubTotal(subtotal);
+						
+					}
+					else
+					{
+						item++;
+						
+						car = new Carrito();
+						
+						//Se llenan las filas del carro
+						car.setItem(item);
+						car.setId_Productos(p.getID());
+						car.setNombres(p.getNombre());
+						car.setDescripcion(p.getDescripcion());
+						car.setPrecioCompra(p.getPrecio());
+						car.setCantidad(cantidad);
+						car.setSubTotal(cantidad*p.getPrecio());
+						listCarrito.add(car);
+						//end
+					}
+				}
+				else
+				{
+					item++;
+					
+					car = new Carrito();
+					
+					//Se llenan las filas del carro
+					car.setItem(item);
+					car.setId_Productos(p.getID());
+					car.setNombres(p.getNombre());
+					car.setDescripcion(p.getDescripcion());
+					car.setPrecioCompra(p.getPrecio());
+					car.setCantidad(cantidad);
+					car.setSubTotal(cantidad*p.getPrecio());
+					listCarrito.add(car);
+					//end
+				}
 				
-				//Se llenan las filas del carro
-				car.setItem(item);
-				car.setId_Productos(p.getID());
-				car.setNombres(p.getNombre());
-				car.setDescripcion(p.getDescripcion());
-				car.setPrecioCompra(p.getPrecio());
-				car.setCantidad(cantidad);
-				car.setSubTotal(cantidad*p.getPrecio());
-				listCarrito.add(car);
-				//end
-				
-				
-				System.out.print(car.getDescripcion());
 				break;
 			case "Comprar":
 				ID =  Long.parseLong(resquest.getParameter("ID"));	//Captura el ID
@@ -91,7 +132,7 @@ public class TiendaControlador {
 				car.setCantidad(cantidad);
 				car.setSubTotal(cantidad*p.getPrecio());
 				listCarrito.add(car);
-		
+				
 			case "OpenCarrito":								//Abrir Carrito
 				totalPagar=0;
 				for(int i=0;i<listCarrito.size();i++)
@@ -99,12 +140,30 @@ public class TiendaControlador {
 					totalPagar = totalPagar + listCarrito.get(i).getSubTotal();
 				}
 				resquest.setAttribute("contador", listCarrito.size());
-				resquest.setAttribute("total", totalPagar );	
+				resquest.setAttribute("total", totalPagar );	//total a pagar	
 				resquest.setAttribute("carrito", listCarrito);
-				
-			
+						
 				return "carrito";
-			
+			case "Delete":
+				Long idproducto= Long.parseLong(resquest.getParameter("idp"));
+				for(int i=0; i<listCarrito.size();i++)
+				{
+					if(listCarrito.get(i).getId_Productos()==idproducto)
+					{
+						listCarrito.remove(i);
+					}
+					
+					
+				}
+				totalPagar=0;
+				for(int i=0;i<listCarrito.size();i++)
+				{
+					totalPagar = totalPagar + listCarrito.get(i).getSubTotal();
+				}
+				resquest.setAttribute("contador", listCarrito.size());
+				resquest.setAttribute("total", totalPagar );	//total a pagar	
+				resquest.setAttribute("carrito", listCarrito);
+				return "carrito";
 			default:
 			
 				break;

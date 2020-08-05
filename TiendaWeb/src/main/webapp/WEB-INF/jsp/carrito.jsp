@@ -15,6 +15,8 @@
         <script src="https://stackpath.bootstrap.com/bootstrap/4.1.3/js/bootstrap.min,js" crossorigin="anonymous"></script>
         <script src="/js/main.js"></script>
         
+      
+        
         	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="#">Tienda Web</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -48,22 +50,23 @@
 							<th>PRECIO</th>
 							<th>CANTIDAD</th>
 							<th>SUBTOTAL</th>
+							<th>ACCION</th>
 						</tr>
 					</thead>
 					<tbody>
 					<c:forEach var="car" items="${carrito}">
 						<tr>
-							<th>${car.getItem()}</th>
-							<th>${car.getNombres()}</th>
-							<th>${car.descripcion}</th>
-							<th>${car.precioCompra}</th>
-							<th>${car.cantidad}</th>
-							<th>${car.subTotal}</th>
+							<td>${car.getItem()}</td>
+							<td>${car.getNombres()}</td>
+							<td>${car.descripcion}</td>
+							<td>${car.precioCompra}</td>
+							<td>${car.cantidad}</td>
+							<td>${car.subTotal}</td>
 							<td>
-								<a href="#">Eliminar</a>
-								<a href="#">Editar</a>
+							<a href="/TiendaWeb/list?accion=Delete&idp=${car.getId_Productos()}" id="btnDelete">eliminar</a>
 							</td>
 						</tr>
+														
 					</c:forEach>
 						
 					</tbody>
@@ -90,5 +93,9 @@
 			</div>
 		</div>
 	</div>
+  		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="/js/funciones.js"></script>
+	
+	
         </body>
 </html>
