@@ -40,7 +40,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/carrito">
+        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">
         	<i class = "fas fa-cart-plus">
         		<label style="color: orange;">(${contador})</label>
         	</i> Ver Carrito
@@ -106,7 +106,7 @@
         							
         							<div>
         							<a href="/TiendaWeb/list?accion=AddToCarrito&ID=${p.ID}" class="btn btn-outline-info">Agregar a Carrito</a>
-        							<a href="" class ="btn btn-danger">Comprar</a>
+        							<a href="/TiendaWeb/list?accion=Comprar&ID=${p.ID}" class ="btn btn-danger">Comprar</a>
         							</div>
         						</div>
         						
