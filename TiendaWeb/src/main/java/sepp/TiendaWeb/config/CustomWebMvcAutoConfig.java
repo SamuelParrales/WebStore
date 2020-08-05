@@ -14,6 +14,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @AutoConfigureAfter(DispatcherServletAutoConfiguration.class)
 public class CustomWebMvcAutoConfig implements WebMvcConfigurer{
 	
+	
+	@Value("${upload.path}")
+	public String uploadDir;
+	
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver(){
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -24,13 +28,12 @@ public class CustomWebMvcAutoConfig implements WebMvcConfigurer{
     }
     
 	
-	@Value("${upload.path}")
-	public String uploadDir;
+    
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String myExternalFilePath = "file:"+uploadDir+"/";
-		registry.addResourceHandler("/pic/**").addResourceLocations(myExternalFilePath);
+	    String myExternalFilePath = "file:"+uploadDir+"/";
+	    registry.addResourceHandler("/pic/**").addResourceLocations(myExternalFilePath);
 		
 		registry.addResourceHandler("/pdfs/**")
         .addResourceLocations("/WEB-INF/pdfs/");

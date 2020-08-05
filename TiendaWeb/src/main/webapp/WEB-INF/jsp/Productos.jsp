@@ -96,7 +96,8 @@
         						
         						<div class="card-body">			
         							<i>$ ${p.getPrecio()}</i>
-        							<img src="@{pic/{id}(id=${p.image}+.jpg)}" width="200" height="180"> <!-- Aqui va la imagen -->
+        							
+        							<img src="/pic/${p.image}.jpg" width="200" height="180" class= "rounded"> <!-- Aqui va la imagen -->
         						</div>
         						
         						<div class = "card-footer text-center">
