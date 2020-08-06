@@ -112,10 +112,16 @@ public class TiendaControlador {
 		return "Productos";
 	}
 	
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
+	
+	@GetMapping("/agregar")
+	public String add_product() {
+		return "agregar";
+	}
+	
 	
 //*******************************************Metodos complementarios para evitar redundancia 
 	private void CopyAtributos()		//Copias los atributos en el carro de compra

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,8 @@
         <script src="https://stackpath.bootstrap.com/bootstrap/4.1.3/js/bootstrap.min,js" crossorigin="anonymous"></script>
         <script src="/js/main.js"></script>
         
+      
+        
         	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="#">Tienda Web</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,8 +27,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/TiendaWeb/list">Ver Productos</a>
       </li>
-       <li class="nav-item active">
-        <a class="nav-link" href="#">Ver Carrito<span class="sr-only">(current)</span></a>
+       <li class="nav-item">
+        <a class="nav-link" href="/TiendaWeb/carrito">
+        	<i class = "fas fa-cart-plus">
+        		<label style="color: orange;">(${contador})</label>
+        	</i> Ver Carrito
+        </a>
       </li>
     </ul>
   </div>
@@ -43,17 +50,25 @@
 							<th>PRECIO</th>
 							<th>CANTIDAD</th>
 							<th>SUBTOTAL</th>
+							<th>ACCION</th>
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="car" items="${carrito}">
 						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
+							<td>${car.getItem()}</td>
+							<td>${car.getNombres()}</td>
+							<td>${car.descripcion}</td>
+							<td>${car.precioCompra}</td>
+							<td>${car.cantidad}</td>
+							<td>${car.subTotal}</td>
+							<td>
+							<a href="/TiendaWeb/list?accion=Delete&idp=${car.getId_Productos()}" id="btnDelete">eliminar</a>
+							</td>
 						</tr>
+														
+					</c:forEach>
+						
 					</tbody>
 				</table>
 			</div>
@@ -64,20 +79,23 @@
 						</div>
 						<div class="card-body">
 							<label>Subtotal</label>
-							<input type="text" readonly="" class="form-control">
+							<input type="text" value="$ ${total}" readonly="" class="form-control">
 							<label>Descuento</label>
-							<input type="text" readonly="" class="form-control">
+							<input type="text" value="$ 0.00" readonly="" class="form-control">
 							<label>Total a Pagar</label>
-							<input type="text" readonly="" class="form-control">
+							<input type="text" value="$ ${total}" readonly="" class="form-control">
 						</div>
 						<div class="card-footer">
-							<a href="#" class="btn btn-info btn-block">Realizar Pagp</a>
+							<a href="#" class="btn btn-info btn-block">Realizar Pago</a>
 							<a href="#" class="btn btn-danger btn-block">Generar Compra</a>
-							
 						</div>
 					</div>
 			</div>
 		</div>
 	</div>
+  		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="/js/funciones.js"></script>
+	
+	
         </body>
 </html>

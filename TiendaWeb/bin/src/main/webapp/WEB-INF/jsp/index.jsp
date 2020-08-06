@@ -38,7 +38,7 @@
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/carrito">Ver Carrito</a>
+        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">Ver Carrito</a>
       </li>
     <!--  <li class="dropdown">
  	 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

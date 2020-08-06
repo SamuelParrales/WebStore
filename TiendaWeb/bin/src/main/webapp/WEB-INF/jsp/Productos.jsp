@@ -23,7 +23,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   
   
-  <a class="navbar-brand" href="#">Tienda Web</a>
+    <a class="navbar-brand" href="#">Tienda Web</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -40,7 +40,11 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/carrito">Ver Carrito</a>
+        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">
+        	<i class = "fas fa-cart-plus">
+        		<label style="color: orange;">(${contador})</label>
+        	</i> Ver Carrito
+        </a>
       </li>
       
     </ul>
@@ -92,7 +96,8 @@
         						
         						<div class="card-body">			
         							<i>$ ${p.getPrecio()}</i>
-        							<img src="@{pic/{id}(id=${p.image}+.jpg)}" width="200" height="180"> <!-- Aqui va la imagen -->
+        							
+        							<img src="/pic/${p.image}.jpg" width="200" height="180" class= "rounded"> <!-- Aqui va la imagen -->
         						</div>
         						
         						<div class = "card-footer text-center">
@@ -101,8 +106,8 @@
         							<label>Disponibles: ${p.getUnidades()}</label>
         							
         							<div>
-        							<a href="" class="btn btn-outline-info">Agregar a Carrito</a>
-        							<a href="" class ="btn btn-danger">Comprar</a>
+        							<a href="/TiendaWeb/list?accion=AddToCarrito&ID=${p.ID}" class="btn btn-outline-info">Agregar a Carrito</a>
+        							<a href="/TiendaWeb/list?accion=Comprar&ID=${p.ID}" class ="btn btn-danger">Comprar</a>
         							</div>
         						</div>
         						

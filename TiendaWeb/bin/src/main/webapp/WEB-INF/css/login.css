@@ -47,7 +47,7 @@ body{
     content: "\f007";
 }
 
-.form-group#contrasena-group::before{
+.form-group#contra-group::before{
     content: "\f084";
 }
 
