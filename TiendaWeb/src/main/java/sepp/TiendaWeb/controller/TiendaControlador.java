@@ -95,27 +95,29 @@ public class TiendaControlador {
 	
 	
 	@GetMapping("/list/delete")		//Elimina productos del carrito
-	public String DeleteProductoCarrito(HttpServletRequest resquest) 
+	public void DeleteProductoCarrito(HttpServletRequest resquest) 
 	{
+		boolean Encontrado = false;
 		Long idproducto= Long.parseLong(resquest.getParameter("idp"));
 		for(int i=0; i<listCarrito.size();i++)
 		{
+			
+				
 			if(listCarrito.get(i).getId_Productos()==idproducto)
 			{
 				listCarrito.remove(i);
+				item--;
+				Encontrado = true;
 			}
-			
-			
+			if(Encontrado)
+			listCarrito.get(i).setItem(i+1);
 		}
 		totalPagar=0;
 		for(int i=0;i<listCarrito.size();i++)
 		{
 			totalPagar = totalPagar + listCarrito.get(i).getSubTotal();
 		}
-		resquest.setAttribute("contador", listCarrito.size());
-		resquest.setAttribute("total", totalPagar );	//total a pagar	
-		resquest.setAttribute("carrito", listCarrito);
-		return "carrito";
+		
 	}
 	
 	
