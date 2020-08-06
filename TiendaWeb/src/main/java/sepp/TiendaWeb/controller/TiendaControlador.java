@@ -46,6 +46,7 @@ public class TiendaControlador {
 	Producto p;
 	Carrito car;
 													//FinCarrito
+
 	
 	@GetMapping("/list")				//Lista los productos
 	public String showProducts(HttpServletRequest resquest) 
@@ -78,26 +79,6 @@ public class TiendaControlador {
 				resquest.setAttribute("carrito", listCarrito);
 						
 				return "carrito";
-			case "Delete":
-				Long idproducto= Long.parseLong(resquest.getParameter("idp"));
-				for(int i=0; i<listCarrito.size();i++)
-				{
-					if(listCarrito.get(i).getId_Productos()==idproducto)
-					{
-						listCarrito.remove(i);
-					}
-					
-					
-				}
-				totalPagar=0;
-				for(int i=0;i<listCarrito.size();i++)
-				{
-					totalPagar = totalPagar + listCarrito.get(i).getSubTotal();
-				}
-				resquest.setAttribute("contador", listCarrito.size());
-				resquest.setAttribute("total", totalPagar );	//total a pagar	
-				resquest.setAttribute("carrito", listCarrito);
-				return "carrito";
 			default:
 			
 				break;
@@ -111,6 +92,32 @@ public class TiendaControlador {
 		resquest.setAttribute("products", repo.findAll());
 		return "Productos";
 	}
+	
+	
+	@GetMapping("/list/delete")		//Elimina productos del carrito
+	public String DeleteProductoCarrito(HttpServletRequest resquest) 
+	{
+		Long idproducto= Long.parseLong(resquest.getParameter("idp"));
+		for(int i=0; i<listCarrito.size();i++)
+		{
+			if(listCarrito.get(i).getId_Productos()==idproducto)
+			{
+				listCarrito.remove(i);
+			}
+			
+			
+		}
+		totalPagar=0;
+		for(int i=0;i<listCarrito.size();i++)
+		{
+			totalPagar = totalPagar + listCarrito.get(i).getSubTotal();
+		}
+		resquest.setAttribute("contador", listCarrito.size());
+		resquest.setAttribute("total", totalPagar );	//total a pagar	
+		resquest.setAttribute("carrito", listCarrito);
+		return "carrito";
+	}
+	
 	
 	@GetMapping("/login")
 	public String login() {
