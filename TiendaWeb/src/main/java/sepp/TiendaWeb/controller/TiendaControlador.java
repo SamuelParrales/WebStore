@@ -1,11 +1,15 @@
 package sepp.TiendaWeb.controller;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
-
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import sepp.TiendaWeb.entities.Carrito;
 import sepp.TiendaWeb.entities.Cliente;
+import sepp.TiendaWeb.entities.Compra;
 import sepp.TiendaWeb.entities.Pago;
 import sepp.TiendaWeb.entities.Producto;
+import sepp.TiendaWeb.entities.detalle_compra;
+import sepp.TiendaWeb.repos.ClienteRepo;
+import sepp.TiendaWeb.repos.CompraRepo;
+import sepp.TiendaWeb.repos.DetalleRepo;
+import sepp.TiendaWeb.repos.PagoRepo;
 import sepp.TiendaWeb.repos.ProductRepo;
 import sepp.TiendaWeb.service.PictureService;
 
@@ -29,7 +39,19 @@ import sepp.TiendaWeb.service.PictureService;
 public class TiendaControlador {
 	
 	@Autowired
-	private ProductRepo repo;
+	private ProductRepo repo;					//Repositorio del producto
+	
+	@Autowired
+	private CompraRepo comprarepo;				//Repositorio de las compras
+	
+	@Autowired
+	private ClienteRepo clienterepo;			//Repositorio del cliente
+	
+	@Autowired
+	private PagoRepo pagorepo;					//Repositorios de los pagos
+	
+	@Autowired
+	private DetalleRepo detallerepo;			//Repositorios de los detalles
 	
 	@Autowired
 	PictureService picService;
@@ -97,10 +119,10 @@ public class TiendaControlador {
 	
 	
 	@GetMapping("/list/delete")		//Elimina productos del carrito
-	public void DeleteProductoCarrito(HttpServletRequest resquest) 
+	public void DeleteProductoCarrito(HttpServletRequest request) throws ServletException, IOException 
 	{
 		boolean Encontrado = false;
-		Long idproducto= Long.parseLong(resquest.getParameter("idp"));
+		Long idproducto= Long.parseLong(request.getParameter("idp"));
 		for(int i=0; i<listCarrito.size();i++)
 		{
 			
@@ -119,7 +141,6 @@ public class TiendaControlador {
 		{
 			totalPagar = totalPagar + listCarrito.get(i).getSubTotal();
 		}
-		
 	}
 	
 	
@@ -143,10 +164,40 @@ public class TiendaControlador {
 	
 	@GetMapping("/Compras")	
 	public String Compras(){
-		Cliente cliente = new Cliente();		//Por el momento no se va usar alv
-		Pago pago = new Pago();					//Luego se usa xd 
+		if(totalPagar>0)
+		{
+			Long idpago= Long.parseLong("1");
+			Long idcliente= Long.parseLong("1");
+			
+			Pago pago = pagorepo.findById(idpago).orElseThrow( () -> new IllegalArgumentException("invalid pago id: "+idpago));			//Busca el pago
+			Cliente cliente= clienterepo.findById(idcliente).orElseThrow( () -> new IllegalArgumentException("invalid cliente id: "+idcliente));		//Busca el cliente
+			
+			Date fecha = new Date();
+			Compra compra = new Compra(new SimpleDateFormat("dd-MM-yyyy").format(fecha),"pagada",pago.getMonto(), cliente, pago);
+			comprarepo.save(compra);					//Se crea la compra
+			
+			Long idCompra = compra.getIDCompras();		//Se conserva el id de la compra
+			
+			for (int i = 0; i < listCarrito.size(); i++) 	//Se llenan los detalles
+			{
+				Long ID_Producto = listCarrito.get(i).getId_Productos();
+				p = repo.findById(ID_Producto).orElseThrow( () -> new IllegalArgumentException("invalid product id: "+ID));	
+																//Se llenan
+				detalle_compra detalle = new detalle_compra
+						(listCarrito.get(i).getCantidad(), 
+						listCarrito.get(i).getSubTotal(), 
+						compra, 
+						p, 
+						listCarrito.get(i).getPrecioCompra());
+				
+				detallerepo.save(detalle);
+				
+			}
+	
+			
+		}
+		return "carrito";
 		
-		return "Compra generada chupalo!";
 	}
 	
 	

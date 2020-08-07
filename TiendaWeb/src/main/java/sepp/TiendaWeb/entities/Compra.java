@@ -1,6 +1,6 @@
 package sepp.TiendaWeb.entities;
 
-import java.sql.Date;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class Compra {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long IDCompras;
-	private Date FechaCompras;
+	private String FechaCompras;
 	private String Estado;
 	private double Monto;
 	
@@ -35,8 +35,8 @@ public class Compra {
 	
 	
 	
-	public Compra(Date fechaCompras, String estado, double monto, Cliente cliente, Pago pago) {
-		this.FechaCompras = fechaCompras;
+	public Compra(String string, String estado, double monto, Cliente cliente, Pago pago) {
+		this.FechaCompras = string;
 		this.Estado = estado;
 		this.Monto = monto;
 		this.cliente = cliente;
@@ -54,11 +54,11 @@ public class Compra {
 		IDCompras = iDCompras;
 	}
 
-	public Date getFechaCompras() {
+	public String getFechaCompras() {
 		return FechaCompras;
 	}
 
-	public void setFechaCompras(Date fechaCompras) {
+	public void setFechaCompras(String fechaCompras) {
 		FechaCompras = fechaCompras;
 	}
 

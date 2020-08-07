@@ -16,8 +16,10 @@ public class detalle_compra {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long Id_Detalle;
 	private int Cantidad;
-	private double PrecioCompra;
+	private double Subtotal;
+	private double PrecioUnit;
 	
+
 	@JoinColumn(name="ID_Compra")
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Compra compra;
@@ -26,8 +28,22 @@ public class detalle_compra {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Producto producto;
 
+	public detalle_compra() {
+		// TODO Auto-generated constructor stub
+	}
 	
-				//Setter y getter
+		public detalle_compra(int cantidad, double Subtotal, Compra compra, Producto producto, double PrecioU) {
+		this.Cantidad = cantidad;
+		this.Subtotal=Subtotal;
+		this.compra = compra;
+		this.producto = producto;
+		this.PrecioUnit = PrecioU;
+		}
+
+
+
+
+	//Setter y getter
 	public Long getId_Detalle() {
 		return Id_Detalle;
 	}
@@ -42,14 +58,6 @@ public class detalle_compra {
 
 	public void setCantidad(int cantidad) {
 		Cantidad = cantidad;
-	}
-
-	public double getPrecioCompra() {
-		return PrecioCompra;
-	}
-
-	public void setPrecioCompra(double precioCompra) {
-		PrecioCompra = precioCompra;
 	}
 
 	public Compra getCompra() {
@@ -68,6 +76,20 @@ public class detalle_compra {
 		this.producto = producto;
 	}
 	
-	
+	public double getPrecioUnit() {
+		return PrecioUnit;
+	}
+
+	public void setPrecioUnit(double precioUnit) {
+		this.PrecioUnit = precioUnit;
+	}
+
+	public double getSubtotal() {
+		return Subtotal;
+	}
+
+	public void setSubtotal(double subtotal) {
+		Subtotal = subtotal;
+	}
 	
 }
