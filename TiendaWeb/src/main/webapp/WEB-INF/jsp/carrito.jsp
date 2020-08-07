@@ -41,15 +41,15 @@
 			<div class="col-sm-8">
 				<table class="table table-hover">
 					<thead>
-						<tr>
+						<tr class="text-center">
 							<th>ITEM</th>
 							<th>NOMBRES</th>
 							<th>DESCRIPCION</th>
 							<th>PRECIO</th>
-							<th>CANTIDAD</th>
+							<th>CANT</th>
 							<th>SUBTOTAL</th>
 							<th>ACCION</th>
-						</tr>
+						</tr class="text-center">
 					</thead>
 					<tbody>
 					<c:forEach var="car" items="${carrito}">
@@ -58,11 +58,14 @@
 							<td>${car.getNombres()}</td>
 							<td>${car.descripcion}</td>
 							<td>${car.precioCompra}</td>
-							<td>${car.cantidad}</td>
+							<td>
+								<input type="hidden" id="idpro" value="${car.getId_Productos()}"> 
+								<input type="number" id="Cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1"> 
+							</td>
 							<td>${car.subTotal}</td>
 							<td>
-							<input type="hidden" id="idp" value="${car.getId_Productos()}">
-							<a href="#" id="btnDelete">eliminar</a>
+								<input type="hidden" id="idp" value="${car.getId_Productos()}">
+								<a href="#" id="btnDelete">eliminar</a>
 							</td>
 						</tr>
 														

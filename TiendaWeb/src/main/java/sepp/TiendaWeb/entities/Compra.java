@@ -22,9 +22,29 @@ public class Compra {
 	private double Monto;
 	
 	@JoinColumn(name="ID_Cliente")
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)		//Hija de cliente
 	private Cliente cliente;
 	
+	@JoinColumn(name="IdPago")					//Hija de pago
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Pago pago;
+	
+	public Compra() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public Compra(Date fechaCompras, String estado, double monto, Cliente cliente, Pago pago) {
+		this.FechaCompras = fechaCompras;
+		this.Estado = estado;
+		this.Monto = monto;
+		this.cliente = cliente;
+		this.pago = pago;
+	}
+
+
+
 	//Metodos setter y getter
 	public Long getIDCompras() {
 		return IDCompras;
@@ -64,6 +84,14 @@ public class Compra {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public Pago getPago() {
+		return pago;
+	}
+
+	public void setPago(Pago pago) {
+		this.pago = pago;
 	}
 
 	

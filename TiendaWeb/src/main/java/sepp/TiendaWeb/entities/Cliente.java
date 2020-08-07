@@ -15,12 +15,14 @@ public class Cliente {
 	private Long ID;
 	private String nombre;
 	private String apellido;
-	private String contraseña;
+	private String contrasena;
 	private String correo;
 	//Relaciones entre tablas
 	
 	
-	
+	public void setID(Long id) {
+		this.ID=id;
+	}
 	public Long getID() {
 		return ID;
 	}
@@ -41,12 +43,12 @@ public class Cliente {
 		this.apellido = apellido;
 	}
 	
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
 	
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	
 	public String getCorreo() {

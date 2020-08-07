@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import sepp.TiendaWeb.entities.Carrito;
+import sepp.TiendaWeb.entities.Cliente;
+import sepp.TiendaWeb.entities.Pago;
 import sepp.TiendaWeb.entities.Producto;
 import sepp.TiendaWeb.repos.ProductRepo;
 import sepp.TiendaWeb.service.PictureService;
@@ -32,7 +34,7 @@ public class TiendaControlador {
 	@Autowired
 	PictureService picService;
 	
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String index() {
 		return "index";
 	}
@@ -119,6 +121,35 @@ public class TiendaControlador {
 		}
 		
 	}
+	
+	
+	@GetMapping("/list/updateCant")		//Actualiza la cantidad de productos del carrito
+	public String updateCantCarrito(HttpServletRequest resquest) 
+	{
+		
+		Long idpro = Long.parseLong(resquest.getParameter("idp"));
+		int cant = Integer.parseInt(resquest.getParameter("Cantidad"));
+		
+		for (int i = 0; i < listCarrito.size(); i++) {
+			if (listCarrito.get(i).getId_Productos()==idpro)
+			{
+				listCarrito.get(i).setCantidad(cant);
+				double subtotal = cant*listCarrito.get(i).getPrecioCompra();
+				listCarrito.get(i).setSubTotal(subtotal);
+			}
+		}
+		return "carrito";
+	}
+	
+	@GetMapping("/Compras")	
+	public String Compras(){
+		Cliente cliente = new Cliente();		//Por el momento no se va usar alv
+		Pago pago = new Pago();					//Luego se usa xd 
+		
+		return "Compra generada chupalo!";
+	}
+	
+	
 	
 	
 	@GetMapping("/login")

@@ -36,4 +36,24 @@ $(document).ready(function(){
             }
         });
     }
+    
+    $("#Cantidad").click(function(){
+    	var idp=$(this).parent().find("#idpro").val();
+        var Cantidad=$(this).parent().find("#Cantidad").val();
+        var url="list/updateCant";
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: "idp="+idp+"&Cantidad="+Cantidad,
+            success: function (data, textStatus, jqXHR){
+                location.href="list?accion=OpenCarrito";
+            }
+        });
+    });
+    
+    
+    
 });
+
+
+
