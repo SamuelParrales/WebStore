@@ -53,6 +53,44 @@ $(document).ready(function(){
     
     
     
+    
+    $("#btnComprar").click(function (){
+    	swal({
+    		  title: "¿Estas seguro que desea realizar esta compra?",
+    		
+    		  icon: "warning",
+    		  buttons: true,
+    		  dangerMode: true,
+    		})
+    		.then((willDelete) => {
+    		  if (willDelete) {
+    			  Comprar();
+    		    swal("Tu compra ha sido realizada con éxito", {
+    		      icon: "success",
+    		    }).then((willDelete)=>{
+        	    	if(willDelete){
+        	    		parent.location.href="/TiendaWeb/Compras";
+        	    	}
+    		   
+    		    });
+    		  } else {
+    		    swal("¡La acción ha sido cancelada!");
+    		  }
+    		});
+        	  
+        	});
+    function Comprar() {
+        var url="/TiendaWeb/Comprar";
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (data, textStatus, jqXHR) {
+               
+            }
+        });
+    }
+    
+    
 });
 
 

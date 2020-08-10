@@ -43,6 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			auth
 			.inMemoryAuthentication().withUser("admin")
 			.password(passwordEncoder().encode("admin")).roles("ADMIN");
+			
 		}
 	
 

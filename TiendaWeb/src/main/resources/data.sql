@@ -6,7 +6,5 @@ values('Tarro de Miel','Miel de Abeja Pura 1 Kg',3,'no se','0eae35d3f0504831ab00
 
 
 insert into Clientes(apellido, contrasena,correo,nombre)
-VALUES('Parrales' , '12345' , 'parrales.samuel@hotmail.com' , 'Tu papito') ;
-
-insert into Pagos(Monto)
-VALUES(22);
+VALUES('Parrales' , '12345' , 'parrales.samuel@hotmail.com' , 'Samuel') ,
+('Palma' , '12345' , 'tuyasabes@hotmail.com' , 'Tu no papito');

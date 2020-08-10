@@ -3,21 +3,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Login</title>    
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
+    <title>Registro</title>  
+    <meta charset="utf-8"  >
+    
     <!--FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <!-- Los iconos tipo Solid de Fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="/css/login.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    
-    <script src="/js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/acerca.css">
      
 	</head>
     <body>
@@ -41,9 +37,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">Carrito</a>
       </li>
-      
        </ul>
-       
        <ul class= "navbar-nav" id="down">
       		<li class="nav-item dropdown" >
 
@@ -60,42 +54,43 @@
       		
       			</ul>
     </div>
-       
       
-</nav> 
+</nav>
+        
         <div class="modal-dialog text-center">
+            <h2 style="color:#3b4652;">Registro</h2>
+           
            <div class="col-sm-8 main-section">
                 <div class="modal-content">
-                    
                     <div class="col-12 user-img" >
-                         <img src="../images/user.png">
+                         <img src="../images/user3.png">
                     </div>    
-                		
-                		<form method="get" class="col-12" action="/TiendaWeb/login-user">
-                    		
-                    		
-					
-                    		<div class="form-sign" id="user-group">
-                        		<input type="text" name="correo" class="form-control" placeholder="Correo"/>
-                    		</div>
-                    		
-                    		<div class="form-group" id="contra-group">
-                        		<input type="password" name="contrasena" class="form-control" placeholder="Contraseña"/>
-                    			</div>
-                    				<input type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> 
-                		</form>
-               				<div class="col-12 forgot">
-                    			<a href="#">Recordar contraseña</a>
-                			</div> 
+                <form method="get"  action="/TiendaWeb/SignUp/Successful">
+                    <div class="form-group" id="nombre">
+                        <input type="text" name="nombre" class="form-control" placeholder="Nombre del cliente" />
+                    </div>
+                    <div class="form-group" id="apellido">
+                        <input type="text" name="apellido" class="form-control" placeholder="Apellido del cliente" required/>
+                    </div>
+                    <div class="form-group" id="correo">
+                        <input type="email" name="correo" class="form-control" placeholder="correo electrónico" required/>
+                    </div>
+                    <div class="form-group" id="contrasena">
+                        <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Registrarse</button>
+                </form>
+                <div class="col-12 forgot">
+                    <a href="/TiendaWeb/login">Ya tengo cuenta</a>
+                </div> 
                 </div>
             </div>
-            				<c:if test="${not empty error}">			
-								<div class= "alert alert-danger">
-								<c:out value="${error}"></c:out>
-								</div>
-							</c:if>
         </div>
-        
-        
     </body>
+    
+    
+    	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="/js/main.js"></script>    	
 </html>
