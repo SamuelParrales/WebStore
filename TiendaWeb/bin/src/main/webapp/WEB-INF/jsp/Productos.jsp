@@ -11,10 +11,7 @@
     </head>
 
     <body>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrap.com/bootstrap/4.1.3/js/bootstrap.min,js" crossorigin="anonymous"></script>
-        <script src="/js/main.js"></script>
-        <script type="text/javascript"></script>  			 <!-- Revisar esto -->
+   
         
              
              
@@ -36,46 +33,61 @@
       </li>
      
      <li class="nav-item active">
-        <a class="nav-link" href="#">Ver Productos<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Productos<span class="sr-only">(current)</span></a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">
         	<i class = "fas fa-cart-plus">
         		<label style="color: orange;">(${contador})</label>
-        	</i> Ver Carrito
+        	</i>Carrito
         </a>
       </li>
       
     </ul>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      	
-      	<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      
       
       	
-      	<ul class= "navbar-nav">
-      		<li class="nav-item dropdown">
-        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          		Iniciar Sesión
-        		</a>
-        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          			<a class="dropdown-item" href="#">Action</a>
-          			<a class="dropdown-item" href="#">Another action</a>
-          			<div class="dropdown-divider"></div>
-          			<a class="dropdown-item" href="#">Something else here</a>
-        		</div>
+      	<!-- Inicia la el boton que se despliga -->
+                <ul class= "navbar-nav" id="down">
+      		<li class="nav-item dropdown" >
+    	<c:choose>
+    		<c:when test="${mode=='log_off'}">
+    			
+        				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
+          				Iniciar Sesión
+        				</a>
+        				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+          					<img src="../images/user.png" width="40" height="40" class= "rounded">
+          					<a class="dropdown-item" href="login">Iniciar sesión</a>
+          					<a class="dropdown-item" href="SignUp">Registrarse</a>
+        					</div>
         		
-      		</li>
+      			
+    		</c:when>
+    		<c:when test="${mode=='log_on'}">
+    			
+        				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
+          				${User.getNombre()} ${User.getApellido()}
+        				</a>
+        				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+          					<img src="../images/user.png" width="40" height="40" class= "rounded">
+          					<a class="dropdown-item" href="Compras">Mis Compras</a>
+          					<a class="dropdown-item" href="#">Cerrar sesión</a>
+        					</div>
+        		
+      				
+    		</c:when>
+    		
+    	</c:choose>
+    		</li>
       		
-      	</ul>
+      			</ul>
+      			<!-- Termina la el boton que se despliga -->
       </div>
       
       
-  </div>
 </nav>
            
     <!--Fin de la navegacion   -->   
@@ -121,7 +133,10 @@
         		</div>	
         	</div>
         	
-        	
+     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="/js/main.js"></script>    	
         	
         	
     </body>

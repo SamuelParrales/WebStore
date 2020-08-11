@@ -218,7 +218,10 @@ public class TiendaControlador {
 	@GetMapping("/Compras")
 	public String Compras(HttpServletRequest request)
 	{
-		request.setAttribute("mode", loginstarted);
+		if(Sesioncliente==null)
+		{
+			return "error";
+		}
 		request.setAttribute("User", Sesioncliente);
 		String accion = request.getParameter("accion");
 		
@@ -230,8 +233,10 @@ public class TiendaControlador {
 			return "detalles";
 		}
 		
-		request.setAttribute("compras",comprarepo.findByCliente(Sesioncliente)); //
-		return "compras";
+			request.setAttribute("compras",comprarepo.findByCliente(Sesioncliente)); //
+			return "compras";
+		
+		
 		
 	}
 	

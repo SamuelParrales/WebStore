@@ -43,6 +43,14 @@ body{
     padding-top:4px;
 }
 
+.form-group#apellido::before{
+    content: "\f007";
+}
+
+.form-group#contrasena::before{
+    content: "\f084";
+}
+
 .form-group#nombre::before{
     content: "\f007";
 }
@@ -51,7 +59,7 @@ body{
     content: "\f007";
 }
 
-.form-group#contraseña::before{
+.form-group#contrasena::before{
     content: "\f084";
 }
 

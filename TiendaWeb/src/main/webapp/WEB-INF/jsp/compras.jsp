@@ -7,6 +7,7 @@
         <title>Mi compra</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
     	<link rel="stylesheet" type="text/css" href="/css/main.css">
     </head>
@@ -20,14 +21,14 @@
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb">Inicio</a>
+        <a class="nav-link" href="/TiendaWeb"><i class="glyphicon glyphicon-home" style = "color : white; height: 20px; width: 20px;" ></i> Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/list">Productos</a>
+        <a class="nav-link" href="/TiendaWeb/list"><i class="glyphicon glyphicon-list-alt" style = "color : white; height: 20px; width: 20px;" ></i> Productos</a>
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">Carrito</a>
+        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito"> <i class="glyphicon glyphicon-shopping-cart" style = "color : white; height: 20px; width: 20px;" ></i>	Carrito</a>
       </li>
   
     </ul>
@@ -35,35 +36,18 @@
     
     	<ul class= "navbar-nav" id="down">
       		<li class="nav-item dropdown" >
-    	<c:choose>
-    		<c:when test="${mode=='log_off'}">
+    	
     			
         				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
-          				Iniciar Sesión
-        				</a>
-        				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
-          					<img src="../images/user.png" width="40" height="40" class= "rounded">
-          					<a class="dropdown-item" href="login">Iniciar sesión</a>
-          					<a class="dropdown-item" href="SignUp">Registrarse</a>
-        					</div>
-        		
-      			
-    		</c:when>
-    		<c:when test="${mode=='log_on'}">
-    			
-        				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
-          				${User.getNombre()} ${User.getApellido()}
+          				<i class="glyphicon glyphicon-user" style = "color : white; height: 20px; width: 20px;" ></i> ${User.getNombre()} ${User.getApellido()}
         				</a>
         				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
           					<img src="../images/user.png" width="40" height="40" class= "rounded">
           					<a class="dropdown-item" href="Compras">Mis Compras</a>
-          					<a class="dropdown-item" href="#">Cerrar sesión</a>
+          					<a class="dropdown-item" href="/TiendaWeb?accion=logoff">Cerrar sesión</a>
         					</div>
         		
-      				
-    		</c:when>
-    		
-    	</c:choose>
+      			
     		</li>
       		
       			</ul>
@@ -92,7 +76,7 @@
                         </thead>
                         <tbody>
                         <c:forEach var="compra" items="${compras}">
-                        	<tr>
+                        	<tr  class="text-center" style="text-align :center">
                     			<td >${compra.getIDCompras()}</td>
                     			<td >${compra.getFechaCompras()}</td>
                     			<td >${compra.getMonto()}</td>

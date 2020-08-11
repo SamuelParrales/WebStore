@@ -6,7 +6,9 @@
         <title>Detalle de mis compras</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    	<link rel="stylesheet" type="text/css" href="/css/main.css">
     </head>
     <body>
       
@@ -17,14 +19,14 @@
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb">Inicio</a>
+        <a class="nav-link" href="/TiendaWeb"><i class="glyphicon glyphicon-home" style = "color : white; height: 20px; width: 20px;" ></i> Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/list">Productos</a>
+        <a class="nav-link" href="/TiendaWeb/list"><i class="glyphicon glyphicon-list-alt" style = "color : white; height: 20px; width: 20px;" ></i> Productos</a>
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">Carrito</a>
+        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito"><i class="glyphicon glyphicon-shopping-cart" style = "color : white; height: 20px; width: 20px;" ></i> Carrito</a>
       </li>
   
     </ul>
@@ -32,35 +34,14 @@
     
     	<ul class= "navbar-nav" id="down">
       		<li class="nav-item dropdown" >
-    	<c:choose>
-    		<c:when test="${mode=='log_off'}">
-    			
         				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
-          				Iniciar Sesión
-        				</a>
-        				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
-          					<img src="../images/user.png" width="40" height="40" class= "rounded">
-          					<a class="dropdown-item" href="login">Iniciar sesión</a>
-          					<a class="dropdown-item" href="SignUp">Registrarse</a>
-        					</div>
-        		
-      			
-    		</c:when>
-    		<c:when test="${mode=='log_on'}">
-    			
-        				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
-          				${User.getNombre()} ${User.getApellido()}
+          				<i class="glyphicon glyphicon-user" style = "color : white; height: 20px; width: 20px;" ></i> ${User.getNombre()} ${User.getApellido()}
         				</a>
         				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
           					<img src="../images/user.png" width="40" height="40" class= "rounded">
           					<a class="dropdown-item" href="Compras">Mis Compras</a>
-          					<a class="dropdown-item" href="#">Cerrar sesión</a>
+          					<a class="dropdown-item" href="/TiendaWeb?accion=logoff">Cerrar sesión</a>
         					</div>
-        		
-      				
-    		</c:when>
-    		
-    	</c:choose>
     		</li>
       		
       			</ul>
@@ -73,7 +54,7 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-sm-8">
-                    <h3>Mis compras</h3>
+                    <h3>Detalles</h3>
                     <table class="table table-hover" style="width: max-content;">
                         <thead style="width: auto;">
                         
@@ -89,13 +70,13 @@
                         </thead>
                         <tbody>
                         <c:forEach var="detalle" items="${detalles}">
-                        	 <tr>
-                    			<td >${detalle.compra.getIDCompras()}</td>
-                    			<td >${detalle.producto.getID()}</td>
-                   				 <td >${detalle.getCantidad()}</td>
-                    			<td >${detalle.getPrecioUnit()}</td>
-                    			<td >${detalle.getSubtotal()} &nbsp; &nbsp;  &nbsp;</td>
-                    			<td>
+                        	 <tr class="text-center" style="text-align :center" >
+                    			<td style="text-align :center">${detalle.compra.getIDCompras()}</td>
+                    			<td style="text-align :center">${detalle.producto.getID()}</td>
+                   				<td style="text-align :center">${detalle.getCantidad()}</td>
+                    			<td style="text-align :center" >${detalle.getPrecioUnit()}</td>
+                    			<td style="text-align :center" >${detalle.getSubtotal()} &nbsp; &nbsp;  &nbsp;</td>
+                    			<td style="text-align :center">
                
                     			<img src="/pic/${detalle.producto.getImage()}.jpg" width="100" height="80" class= "rounded">
                     			</td>

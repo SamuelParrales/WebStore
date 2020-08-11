@@ -64,5 +64,12 @@ body{
     line-height: 1.5;
 }
 
+.navbar-nav{
+    padding-right: 30px;
+    text-align: left;
+    
+}
+
+
 
 

@@ -6,6 +6,8 @@
         <title>Tienda Web</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
  		 <link rel="stylesheet" type="text/css" href="/css/main.css">
     </head>
@@ -29,15 +31,17 @@
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/">Inicio</a>
+        <a class="nav-link" href="/TiendaWeb/"><i class="glyphicon glyphicon-home" style = "color : white; height: 20px; width: 20px;" ></i> Inicio</a>
       </li>
      
      <li class="nav-item active">
-        <a class="nav-link" href="#">Productos<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><i class="glyphicon glyphicon-list-alt" style = "color : white; height: 20px; width: 20px;" ></i> Productos<span class="sr-only">(current)</span></a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">
+        	
+        	<i class="glyphicon glyphicon-shopping-cart" style = "color : white; height: 20px; width: 20px;" ></i>
         	<i class = "fas fa-cart-plus">
         		<label style="color: orange;">(${contador})</label>
         	</i>Carrito
@@ -56,7 +60,7 @@
     		<c:when test="${mode=='log_off'}">
     			
         				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
-          				Iniciar Sesión
+          				<i class="glyphicon glyphicon-user" style = "color : white; height: 20px; width: 20px;" ></i> Iniciar Sesión
         				</a>
         				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
           					<img src="../images/user.png" width="40" height="40" class= "rounded">
@@ -69,12 +73,12 @@
     		<c:when test="${mode=='log_on'}">
     			
         				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
-          				${User.getNombre()} ${User.getApellido()}
+          				<i class="glyphicon glyphicon-user" style = "color : white; height: 20px; width: 20px;" ></i> ${User.getNombre()} ${User.getApellido()}
         				</a>
         				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
           					<img src="../images/user.png" width="40" height="40" class= "rounded">
           					<a class="dropdown-item" href="Compras">Mis Compras</a>
-          					<a class="dropdown-item" href="#">Cerrar sesión</a>
+          					<a class="dropdown-item" href="/TiendaWeb?accion=logoff">Cerrar sesión</a>
         					</div>
         		
       				
@@ -114,8 +118,7 @@
         						
         						<div class = "card-footer text-center">
         							<label>${p.getDescripcion()}</label>
-        							<br>
-        							<label>Disponibles: ${p.getUnidades()}</label>
+        							
         							
         							<div>
         							<a href="/TiendaWeb/list?accion=AddToCarrito&ID=${p.ID}" class="btn btn-outline-info">Agregar a Carrito</a>

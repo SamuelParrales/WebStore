@@ -1,8 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
     <title>Login</title>    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
     <!--FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -29,51 +31,71 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="/TiendaWeb/">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/list">Ver Productos</a>
+        <a class="nav-link" href="/TiendaWeb/list">Productos</a>
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="/TiendaWeb/carrito">Ver Carrito</a>
+        <a class="nav-link" href="/TiendaWeb/list?accion=OpenCarrito">Carrito</a>
       </li>
-    <!--  <li class="dropdown">
- 	 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   	 Dropdown button
-  	</button>
-  	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
- 	 </div>
-	</li>-->
-    </ul>
-    </div>
       
-</nav>
-        
+       </ul>
+       
+       <ul class= "navbar-nav" id="down">
+      		<li class="nav-item dropdown" >
+
+        				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        		
+          				Iniciar Sesión
+        				</a>
+        				<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+          					<img src="../images/user.png" width="40" height="40" class= "rounded">
+          					<a class="dropdown-item" href="login">Iniciar sesión</a>
+          					<a class="dropdown-item" href="SignUp">Registrarse</a>
+        					</div>
+    			     				
+    		</li>
+      		
+      			</ul>
+    </div>
+       
+      
+</nav> 
         <div class="modal-dialog text-center">
            <div class="col-sm-8 main-section">
                 <div class="modal-content">
+                    
                     <div class="col-12 user-img" >
                          <img src="../images/user.png">
                     </div>    
-                <form class="col-12">
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre de usuario"/>
-                    </div>
-                    <div class="form-group" id="contra-group">
-                        <input type="password" class="form-control" placeholder="Contrase�a"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>
-                </form>
-                <div class="col-12 forgot">
-                    <a href="#">Recordar contrase�a</a>
-                </div> 
+                		
+                		<form method="get" class="col-12" action="/TiendaWeb/login-user">
+                    		
+                    		
+					
+                    		<div class="form-sign" id="user-group">
+                        		<input type="text" name="correo" class="form-control" placeholder="Correo"/>
+                    		</div>
+                    		
+                    		<div class="form-group" id="contra-group">
+                        		<input type="password" name="contrasena" class="form-control" placeholder="Contraseña"/>
+                    			</div>
+                    				<input type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> 
+                		</form>
+               				<div class="col-12 forgot">
+                    			<a href="#">Recordar contraseña</a>
+                			</div> 
                 </div>
             </div>
+            				<c:if test="${not empty error}">			
+								<div class= "alert alert-danger">
+								<c:out value="${error}"></c:out>
+								</div>
+							</c:if>
         </div>
+        
+        
     </body>
 </html>
